@@ -106,7 +106,7 @@
     <checkstyle.sevntu.configLocation>https://raw.githubusercontent.com/checkstyle/checkstyle/checkstyle-${maven.sevntu.checkstyle.plugin.checkstyle.version}/config/checkstyle-sevntu-checks.xml</checkstyle.sevntu.configLocation>
     <checkstyle.sevntu.cache.file>${project.build.outputDirectory}/sevntu.cache</checkstyle.sevntu.cache.file>
     <maven.jacoco.plugin.version>0.8.10</maven.jacoco.plugin.version>
-    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- we disable ITs by default as it need download of 200MB sonar application jar -->
     <skipITs>true</skipITs>

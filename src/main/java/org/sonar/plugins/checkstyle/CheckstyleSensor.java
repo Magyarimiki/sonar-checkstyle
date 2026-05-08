@@ -19,11 +19,15 @@
 
 package org.sonar.plugins.checkstyle;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.scanner.sensor.ProjectSensor;
 
 public class CheckstyleSensor implements ProjectSensor {
+    private static final String CHECKSTYLE_ENABLED = "sonar.checkstyle.enabled";
+    private static final Logger LOG = LoggerFactory.getLogger(CheckstyleSensor.class);
 
     private final CheckstyleExecutor executor;
 
@@ -38,7 +42,12 @@ public class CheckstyleSensor implements ProjectSensor {
 
     @Override
     public void execute(SensorContext context) {
-        executor.execute(context);
+        if (context.config().getBoolean(CHECKSTYLE_ENABLED).orElse(true)) {
+            executor.execute(context);
+        }
+        else {
+            LOG.info("Checkstyle plugin is disabled.");
+        }
     }
 
     @Override
